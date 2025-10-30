@@ -1,65 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Projects from './pages/Project';
+
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [form, setForm] = useState({ name: '', email: '' });
-
-  // Fetch users on mount
-  useEffect(() => {
-    fetch('http://127.0.0.1:4000/api/users')
-      .then(res => res.json())
-      .then(data => setUsers(data))
-      .catch(err => console.error('Error fetching users:', err));
-  }, []);
-
-  // Handle form input
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  // Handle form submit
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const res = await fetch('http://127.0.0.1:4000/api/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form)
-    });
-    const newUser = await res.json();
-    setUsers([...users, newUser]);
-    setForm({ name: '', email: '' });
-  };
-
   return (
-    <div style={{ maxWidth: 400, margin: '2rem auto', fontFamily: 'sans-serif' }}>
-      <h1>User List</h1>
+    <BrowserRouter>
+      <div style={{ maxWidth: 600, margin: '1rem auto', fontFamily: 'sans-serif' }}>
+        <nav style={{ marginBottom: 12 }}>
+          <Link to="/" style={{ marginRight: 8 }}>Home</Link>
+          <Link to="/register" style={{ marginRight: 8 }}>Register</Link>
+          <Link to="/login" style={{ marginRight: 8 }}>Login</Link>
+          <Link to="/profile" style={{ marginRight: 8 }}>Profile</Link>
+          <Link to="/projects" style={{ marginRight: 8 }}>Projects</Link>
+        </nav>
 
-      <form onSubmit={handleSubmit} style={{ marginBottom: '1rem' }}>
-        <input
-          name="name"
-          placeholder="Name"
-          value={form.name}
-          onChange={handleChange}
-          required
-          style={{ display: 'block', marginBottom: '0.5rem', width: '100%' }}
-        />
-        <input
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-          style={{ display: 'block', marginBottom: '0.5rem', width: '100%' }}
-        />
-        <button type="submit" style={{ width: '100%' }}>Add User</button>
-      </form>
-
-      <ul>
-        {users.map(u => (
-          <li key={u._id}>{u.name} — {u.email}</li>
-        ))}
-      </ul>
-    </div>
+        <Routes>
+          <Route path="/" element={<h2>Home</h2>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/projects" element={<Projects />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
