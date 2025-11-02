@@ -1,0 +1,326 @@
+/* --- Container and Title --- */
+.tasks-container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tasks-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+/* --- Create Task Form --- */
+.create-task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.create-task-form input,
+.create-task-form select {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.create-task-form button {
+  padding: 0.6rem 1rem;
+  background-color: #666;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.create-task-form button:hover {
+  background-color: #555;
+}
+
+/* --- Filter Bar --- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.filter-bar select {
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background-color: #fafafa;
+}
+
+/* --- Grid of Tasks --- */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- Individual Task Card --- */
+.task-card {
+  background-color: #fff;
+  padding: 1.2rem 1.4rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 6px solid #e0e0e0;
+  position: relative;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Left border color indicator */
+.task-card[data-status="todo"] {
+  border-left-color: #aaa;
+}
+
+.task-card[data-status="in-progress"] {
+  border-left-color: #f1c40f;
+}
+
+.task-card[data-status="done"] {
+  border-left-color: #27ae60;
+}
+
+/* --- Header and badges --- */
+.task-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.4rem;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+/* --- Badges --- */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+  text-transform: capitalize;
+}
+
+.badge.status-todo {
+  background-color: #aaa;
+}
+.badge.status-in-progress {
+  background-color: #f1c40f;
+  color: #333;
+}
+.badge.status-done {
+  background-color: #27ae60;
+}
+.badge.priority-high {
+  background-color: #e74c3c;
+}
+.badge.priority-medium {
+  background-color: #f39c12;
+}
+.badge.priority-low {
+  background-color: #2ecc71;
+}
+
+/* --- Description --- */
+.task-card p.description {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+  max-height: 3.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Assigned Info --- */
+.task-assigned {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.4rem;
+}
+
+.task-assigned strong {
+  color: #444;
+}
+
+/* --- Edit Task Section --- */
+.edit-task input,
+.edit-task select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.edit-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.edit-actions button:first-child {
+  background-color: #27ae60;
+  color: white;
+}
+
+.edit-actions button:first-child:hover {
+  background-color: #1e874b;
+}
+
+.edit-actions .cancel {
+  background-color: #ccc;
+}
+
+.edit-actions .cancel:hover {
+  background-color: #b3b3b3;
+}
+
+/* --- Action Buttons on Task Card --- */
+.task-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.task-actions button {
+  padding: 0.45rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Edit Button */
+.task-actions button:first-child {
+  background-color: #eee;
+  color: #555;
+}
+
+.task-actions button:first-child:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Delete Button */
+.task-actions .delete-button {
+  background-color: #fff;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+
+.task-actions .delete-button:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* --- Pagination --- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  background-color: #666;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.activity-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.activity-section button {
+  padding: 6px 12px;
+  background: #555;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.activity-list {
+  margin-top: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: left;
+}
+
+.activity-item {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-item .timestamp {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.activity-item .details {
+  margin-top: 0.2rem;
+  font-style: italic;
+}

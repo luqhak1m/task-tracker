@@ -18,7 +18,7 @@ router.post('/register', async (req, res) => {
     if (exists) return res.status(400).json({ error: 'Email already used' });
 
     // const hashed = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, password, role: role === 'member' ? 'member' : 'owner' }); // default role: owner
+    const user = new User({ name, email, password, role: role === 'owner' ? 'owner' : 'member' }); // default role: owner
     await user.save();
 
     const { password: _, ...userSafe } = user.toObject();

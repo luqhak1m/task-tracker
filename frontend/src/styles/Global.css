@@ -1,0 +1,14 @@
+
+:root {
+  --primary-color: #4a4a4a;
+  --bg-color: #ffffff;
+  --error-color: #e74c3c;
+  --font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  font-family: var(--font-family);
+}
