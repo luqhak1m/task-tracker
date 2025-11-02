@@ -57,11 +57,13 @@ npm start
 
 ## Backend
 - Built with Express and Mongoose
-- Organized routes:
+
+Organized routes:
 - auth.js → register/login/profile
 - projects.js → CRUD + members
 - tasks.js → CRUD + permissions
-- Middleware:
+
+Middleware:
 - requireAuth for token verification
 - project-access.js for role-based authorization
 - JWT stored in frontend localStorage
@@ -72,7 +74,6 @@ npm start
 - Global state in features/UserSlice.js
 - Validation via Yup
 - Styled with lightweight CSS modules
-- Navbar hides on login/register pages
 - Protected routes redirect unauthorized users
 
 # Tech Stack
