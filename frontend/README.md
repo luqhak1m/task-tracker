@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# TaskHub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TaskHub is a full-stack project and task management web app built with React, Redux, Express, MongoDB, and JWT-based authentication.
+It lets users register/login, create projects, assign members, and manage tasks collaboratively.
 
-## Available Scripts
+# Installing Dependencies
 
-In the project directory, you can run:
+## backend
 
-### `npm start`
+cd backend
+npm install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## frontend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+cd frontend
+npm install
 
-### `npm test`
+# Environment Variables
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+PORT=4000
+MONGO_URI=mongodb://127.0.0.1:27017/taskhub
+JWT_SECRET=your_jwt_secret_here
 
-### `npm run build`
+# Run the app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## backend
+cd backend
+node server.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## frontend
+cd frontend
+npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Features
 
-### `npm run eject`
+## Authentication
+- Register / Login with form validation using Yup
+- Password hashing (via Mongoose pre-save hook)
+- JWT-based login sessions (1-hour expiry)
+- Role system: owner and member
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Projects Management
+- Create, view, edit, delete projects
+- Add or remove members
+- Owners have full control; members have limited permissions
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Tasks
+- Owners can create, assign, and delete tasks
+- Members can update only their task status
+- Filtering, sorting, and pagination on tasks
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Design Notes
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Backend
+- Built with Express and Mongoose
+- Organized routes:
+- auth.js → register/login/profile
+- projects.js → CRUD + members
+- tasks.js → CRUD + permissions
+- Middleware:
+- requireAuth for token verification
+- project-access.js for role-based authorization
+- JWT stored in frontend localStorage
 
-## Learn More
+## Frontend
+- Built with React + Redux Toolkit
+- Routing handled by React Router
+- Global state in features/UserSlice.js
+- Validation via Yup
+- Styled with lightweight CSS modules
+- Navbar hides on login/register pages
+- Protected routes redirect unauthorized users
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Tech Stack
+Frontend: React, Redux Toolkit, React Router, Yup
+Backend: Node.js, Express, Mongoose, JWT, bcryptjs
+Database: MongoDB (local or Atlas)

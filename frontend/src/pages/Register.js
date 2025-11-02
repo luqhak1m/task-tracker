@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setCredentials } from '../features/UserSlice';
 import '../styles/Auth.css';
+import { useNavigate } from 'react-router-dom';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -17,6 +18,7 @@ export default function Register() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [err, setErr] = useState('');
   const [msg, setMsg] = useState('');
+  const navigate=useNavigate();
 
   const submit = async (e) => {
     e.preventDefault();
@@ -42,7 +44,7 @@ export default function Register() {
       if (!loginRes.ok) return setErr(loginData.error || 'Auto login failed');
 
       dispatch(setCredentials({ user: loginData.user, token: loginData.token }));
-      setMsg('Registered and logged in successfully!');
+      navigate('/projects');
     } catch (validationError) {
       setErr(validationError.message);
     }
