@@ -79,5 +79,5 @@ Middleware:
 # Tech Stack
 Frontend: React, Redux Toolkit, React Router, Yup
 Backend: Node.js, Express, Mongoose, JWT, bcryptjs
-Database: MongoDB (local or Atlas)
+Database: MongoDB
 
