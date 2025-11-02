@@ -21,9 +21,9 @@ npm install
 
 # Environment Variables
 
-PORT=4000
-MONGO_URI=mongodb://127.0.0.1:27017/taskhub
-JWT_SECRET=your_jwt_secret_here
+- PORT=4000
+- MONGO_URI=mongodb://127.0.0.1:27017/taskhub
+- JWT_SECRET=secret
 
 # Run the app
 
