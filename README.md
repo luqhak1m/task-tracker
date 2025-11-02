@@ -11,13 +11,13 @@ It lets users register/login, create projects, assign members, and manage tasks 
 
 ## backend
 
-cd backend
-npm install
+- cd backend
+- npm install
 
 ## frontend
 
-cd frontend
-npm install
+- cd frontend
+- npm install
 
 # Environment Variables
 
@@ -28,12 +28,12 @@ npm install
 # Run the app
 
 ## backend
-cd backend
-node server.js
+- cd backend
+- node server.js
 
 ## frontend
-cd frontend
-npm start
+- cd frontend
+- npm start
 
 # Features
 
